@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Publishers</h2>
+<ul>
+    <div>
+        <a href="{% url 'todo:create' %}">
+            <h3>
+                Create Todo
+            </h3></a>
+    </div>
+    <hr>
+    <span>
+    {% for task in object_list %}
+    {% if task.done == True %}
+    <li><strike>{{task.title}}</strike><br></li>
+    <a href="{% url 'todo:delete'  pk=task.pk %} ">Delete</a> /
+    <a href="{% url 'todo:undone'  pk=task.pk %} ">Undone</a><br>
+    {% else %}
+    <li> {{ task.title }}</li><br>
+    <div>
+        <a href="{% url 'todo:update'  pk=task.pk %} ">Update</a> /
+        <a href="{% url 'todo:delete'  pk=task.pk %} ">Delete</a> /
+        <a href="{% url 'todo:done'  pk=task.pk %} ">Done</a>
+        
+    </div>
+    </span><br>
+    {% endif %}
+    {% endfor %}
+    </ul>
+{% endblock %}

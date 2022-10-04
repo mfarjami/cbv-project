@@ -10,7 +10,7 @@ class IndexView(LoginRequiredMixin, ListView):
     model = Task
 
     def get_queryset(self):
-        return self.model.objects.filter(user=self.request.user)
+        return self.model.objects.filter(owner=self.request.user)
         
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
@@ -18,7 +18,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('todo:index')
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.owner = self.request.user
         return super(TaskCreateView, self).form_valid(form)
 
 
@@ -28,7 +28,7 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('todo:index')
     
     def get_queryset(self):
-        return self.model.objects.filter(user=self.request.user)
+        return self.model.objects.filter(owner=self.request.user)
 
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
@@ -36,7 +36,7 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('todo:index')
 
     def get_queryset(self):
-        return self.model.objects.filter(user=self.request.user)
+        return self.model.objects.filter(owner=self.request.user)
 
 
 class TaskDoneView(LoginRequiredMixin, View):

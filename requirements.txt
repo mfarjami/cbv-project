@@ -1,8 +1,13 @@
 # General module
 Django
 djangorestframework
+djangorestframework-simplejwt
 
 
 # Third party module
 django-filter
 drf-yasg[validation]
+
+# testing
+pytest
+pytest-django

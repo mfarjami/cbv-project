@@ -2,7 +2,17 @@
 Django
 djangorestframework
 djangorestframework-simplejwt
+<<<<<<< HEAD
+=======
+
+>>>>>>> pytest
 
 # Third party module
 django-filter
 drf-yasg[validation]
+
+# testing
+pytest
+pytest-django
+flake8
+black

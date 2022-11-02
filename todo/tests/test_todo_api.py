@@ -18,11 +18,11 @@ def commen_user():
 
 @pytest.mark.django_db
 class TestApiTask:
-    def test_post_get_response_403_status(self, api_client):
+    def test_post_get_response_401_status(self, api_client):
         url = reverse("todo:api-v1:task-list")
         respone = api_client.get(url)
 
-        assert respone.status_code == 403
+        assert respone.status_code == 401
 
     def test_post_get_response_200_status(self, api_client, commen_user):
         url = reverse("todo:api-v1:task-list")
@@ -52,8 +52,8 @@ class TestApiTask:
 
         assert respone.status_code == 400
 
-    def test_post_detail_get_response_403_status(self, api_client):
+    def test_post_detail_get_response_401_status(self, api_client):
         url = reverse("todo:api-v1:task-detail", kwargs={"pk": 1})
         respone = api_client.get(url)
 
-        assert respone.status_code == 403
+        assert respone.status_code == 401

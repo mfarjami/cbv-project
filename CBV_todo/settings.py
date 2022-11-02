@@ -41,17 +41,11 @@ INSTALLED_APPS = [
     "todo",
     "accounts",
     # Rest_framework
-<<<<<<< HEAD
-    'rest_framework',
-    'django_filters',
-    'drf_yasg',
-    'rest_framework.authtoken',
-    'rest_framework_simplejwt',
-=======
     "rest_framework",
+    "rest_framework.authtoken",
     "django_filters",
     "drf_yasg",
->>>>>>> pytest
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -139,21 +133,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Settings DRF
 REST_FRAMEWORK = {
-<<<<<<< HEAD
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-=======
-    "DEFAULT_PERMISSION_CLASSES": [
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
->>>>>>> pytest
-    ],
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ]
 }
-<<<<<<< HEAD
-=======
 
-REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema"}
->>>>>>> pytest

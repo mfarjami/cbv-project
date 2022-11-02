@@ -1,0 +1,8 @@
+[flake8]
+exclude =
+    __init__.py,
+    settings.py,
+    __pycache__,
+
+ignore =
+    E501,

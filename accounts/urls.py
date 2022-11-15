@@ -4,6 +4,7 @@ from . import views
 app_name = "accounts"
 
 urlpatterns = [
+    path('send_email/', views.send_email, name='send_email'),
     path('login/', views.LoginView.as_view(), name="login"),
     path('signup/', views.SignUpView.as_view(), name="signup"),
     path('api/v1/', include('accounts.api.v1.urls')),

@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     "django_filters",
     "drf_yasg",
     "rest_framework_simplejwt",
+    #backgrund process
+    'django_celery_beat' 
+
 ]
 
 MIDDLEWARE = [
@@ -141,3 +144,4 @@ REST_FRAMEWORK = {
     ]
 }
 
+CELERY_BROKER_URL = "redis://redis:6379"

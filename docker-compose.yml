@@ -2,6 +2,14 @@ version: "3.9"
 
 
 services:
+  redis:
+    container_name: redis
+    image: redis
+    command: redis-server --save 60 1 --loglevel warning
+    ports:
+      - "6379:6379"
+    restart: always
+
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -12,3 +20,14 @@ services:
       - "8000:8000"
     environment:
       - DEBUG=True
+    depends_on:
+      - redis
+  
+  worker:
+    build: .
+    volumes:
+      - .:/code
+    command: celery -A CBV_todo worker -l INFO
+    depends_on:
+      - redis
+      - web

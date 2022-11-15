@@ -1,5 +1,5 @@
 # General module
-Django
+Django >3.2, <3.3
 djangorestframework
 djangorestframework-simplejwt
 
@@ -12,3 +12,8 @@ pytest
 pytest-django
 flake8
 black
+
+# backgrund process
+celery
+redis
+django-celery-beat

@@ -25,9 +25,23 @@ services:
   
   worker:
     build: .
+    container_name: cbv-worker
     volumes:
       - .:/code
     command: celery -A CBV_todo worker -l INFO
     depends_on:
       - redis
       - web
+
+  beat:
+    build: .
+    container_name: beat
+    command: celery -A CBV_todo beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    volumes:
+    - .:/code
+    links:
+    - worker
+    - redis
+    depends_on:
+    - worker
+    - redis

@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.views import View
 from .models import Task
+from .tasks import task_delete
 
 # Create your views here.
 
@@ -62,3 +63,8 @@ class TaskUndoneView(LoginRequiredMixin, View):
         object.done = False
         object.save()
         return redirect(self.success_url)
+
+
+def taskdelete(self, request):
+    task_delete.delay()
+    return taskdelete

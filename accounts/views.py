@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView
 from django.views.generic.edit import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
-from .tasks import task_delete, sendemail
+from .tasks import sendemail
 
 
 # Create your views here.
@@ -24,6 +24,3 @@ def send_email(request):
     sendemail.delay()
     return HttpResponse('<h1>Your email sent!</h1>')
 
-def taskdelete(self, request):
-    task_delete.delay()
-    return taskdelete

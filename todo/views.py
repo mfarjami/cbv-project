@@ -3,6 +3,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.views import View
+from django.views.decorators.cache import cache_page
+from django.http import JsonResponse
+import requests, json
 from .models import Task
 
 # Create your views here.
@@ -62,3 +65,15 @@ class TaskUndoneView(LoginRequiredMixin, View):
         object.done = False
         object.save()
         return redirect(self.success_url)
+
+@cache_page(60 * 20)
+def weather(request):
+    """
+        It shows the weather condition of Tabriz city and updates every 20 minutes.
+    """
+    base_url = "http://api.openweathermap.org/data/2.5/weather?"
+    api_key = "80c8173748c3690246d4c2488e06feb7"
+    city = "Tabriz"
+    url = base_url + "appid=" + api_key + "&q=" + city
+    response = requests.get(url)
+    return JsonResponse(response.json())
